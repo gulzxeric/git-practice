@@ -8,4 +8,3 @@
 3. 切到 feature/day2-merge，创建 todo.md（3 行内容 B），提交
 4. 切回 main，git merge feature/day2-merge
 5. 观察是否出现 Merge made by the 'ort' strategy 和新的合并提交
->>>>>>> feature/day2-merge
