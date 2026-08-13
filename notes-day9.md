@@ -31,3 +31,10 @@ git branch <新名> <hash>      # 用哈希重建分支
 - 找回通用公式：`git reflog` 找目标 → `git reset --hard "HEAD@{N}"`
 - reflog 是本地仓库的，不随 push 共享
 - 有了 reflog 做底气，第 2 周开始可以放心用 `--hard` 实验
+
+## 补充：-D 删除分支 vs reflog 的边界
+
+- `git branch -D aa` 删的是 `refs/heads/aa` 引用及其专属 reflog（`git reflog show refs/heads/aa` 报 unknown revision）
+- **HEAD 的 reflog 是独立全局账本**：只要你在该分支上 checkout/commit 过，HEAD 就记住了那些提交，`-D` 删不掉
+- 找回：`git reflog` 找哈希 → `git branch <新名> <哈希>` 重建分支
+- 真丢的唯一场景：HEAD 从未"站"过的提交（正常操作碰不到）
