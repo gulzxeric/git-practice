@@ -29,3 +29,11 @@ git stash drop       # 扔掉某一堆（不要了）
 - stash 存的是工作区整体改动，不是某分支专属，所以跨分支 pop 也会出现改动
 - pop 时若工作区当前状态和 stash 时冲突，同样会弹冲突需要解决
 - 抽屉可以堆多堆，后进的编号小（stash@{0} 最新）
+- **为什么用 stash 不用 commit**：commit 会污染历史（WIP 垃圾提交），stash 是"临时腾地方"，团队协作更干净
+- **多次 stash 是栈**：`pop` 永远先取最新（stash@{0}），取完自动删，下一堆顶上
+- 指定取某堆：`git stash pop stash@{1}`；`git stash apply` 保留记录不删除
+- **同文件多次 stash 的坑**：
+  - 第一次 pop 覆盖文件成功
+  - 第二次 pop 若文件还有未提交改动 → Git 拒绝（`local changes would be overwritten`），stash 保留
+  - 若已提交变干净 → pop 会进来，但可能撞**真冲突**（UU），按 Day 3 套路解决
+- stash pop 冲突的标记：`<<<<<<< Updated upstream`（当前工作区）vs `>>>>>>> Stashed changes`（存起来的）
