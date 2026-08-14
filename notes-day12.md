@@ -24,6 +24,8 @@ git cherry-pick --abort       # 放弃本次 cherry-pick
 - main 上造修复提交 c9ff0b5 → 在 merge 分支 cherry-pick 它 → 生成新提交 0e54e0c
 - 验证：内容一致（bugfix.txt 两边都有），哈希不同（重新生成）
 - git diff main merge 确认 merge 分支自己的改动（cc.txt、merge.txt）未被带入
+- **实战冲突**：cherry-pick bb.txt 撞 UU → 手动解决 → `git add` → `GIT_EDITOR=true git cherry-pick --continue` → 提交 76bb56a
+- **顺带实战**：用 cherry-pick 把 merge 分支上的笔记提交 a3445c0 搬到 main（e83525a）
 
 ## 踩坑/结论
 
