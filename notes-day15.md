@@ -20,6 +20,7 @@ git remote rename <旧名> <新名>   # 重命名远程
 git remote remove <名>            # 删除远程
 git push <远程名> <分支>          # 推送到指定远程
 git config --list | grep remote   # 查看远程配置
+git ls-remote <名>                # 联网验证远程真实存在、能连上（返回分支和哈希）
 ```
 
 ## 今日练习记录
@@ -34,3 +35,6 @@ git config --list | grep remote   # 查看远程配置
 - 多远程时 push 必须写远程名，否则推默认的 origin
 - `remote remove` 只删本地配置，不影响远程仓库本身
 - 换远程地址用 `set-url` 不用删了重加（保留追踪关系）
+- **`git remote add` 不联网验证 URL**，假网址/不存在地址也能 add 成功，真正的问题发生在 fetch/push 时（连不上或被权限拒绝，本地代码安全）
+- **验证远程用 `git ls-remote <名>`**：真的联网查询，返回远程分支+哈希即成功；报 `Could not resolve host` / 认证失败即连不上
+- 自检口诀：`remote -v` 看"我配了啥"（只查本地配置），`ls-remote` 看"真能连上吗"（联网验证）
