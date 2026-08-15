@@ -19,7 +19,7 @@ git remote get-url <名>           # 查看某远程地址
 git remote rename <旧名> <新名>   # 重命名远程
 git remote remove <名>            # 删除远程
 git push <远程名> <分支>          # 推送到指定远程
-git config --list | grep remote   # 查看远程配置
+git config --get-regexp branch  # 查看含 branch 的配置（内置过滤，跨平台通用）
 git ls-remote <名>                # 联网验证远程真实存在、能连上（返回分支和哈希）
 ```
 
